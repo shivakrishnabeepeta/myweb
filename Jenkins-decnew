@@ -8,14 +8,12 @@ pipeline{
         stage("Git Checkout"){
             steps{
                 git credentialsId: 'javahome2', url: 'https://github.com/shivakrishnabeepeta/myweb.git' 
-                sleep 3
             }
         }
         stage("Maven Build"){
             steps{
                 sh "mvn clean package"
                 sh "mv target/*.war target/myweb.war"
-                sleep 4
             }
         }
         stage("deploy-dev"){
